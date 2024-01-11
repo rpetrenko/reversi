@@ -1,5 +1,5 @@
-let rows = 4;
-let cols = 4;
+let rows = 8;
+let cols = 8;
 let board = [];
 let currentPlayer = 1; // 1 for black, -1 for white
 let width = 400;
