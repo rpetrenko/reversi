@@ -8,6 +8,7 @@ let w = width / cols;
 let h = height / rows;
 let player1Count = 2; // Starting count for player 1
 let player2Count = 2; // Starting count for player 2
+let n_passes = 0;
 
 function setup() {
   createCanvas(width, height + h);
@@ -20,8 +21,16 @@ function draw() {
   displayPlayerTurn();
   displayStoneCount();
 
+  // Check if no turn is possible, and pass the turn to the other player
+  if (noTurnPossible()) {
+    currentPlayer = -currentPlayer;
+    n_passes++;
+  } else {
+    n_passes = 0;
+  }
+
   // Check if the game is over
-  if (player1Count + player2Count === rows * cols || noTurnPossible()) {
+  if (player1Count + player2Count === rows * cols || n_passes === 2) {
     gameOver();
   }
 }
